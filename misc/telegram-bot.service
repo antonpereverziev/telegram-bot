@@ -1,0 +1,16 @@
+#cd /etc/systemd/system
+#sudo touch telegram-bot.service // creates an empty text file
+#sudo nano telegram-bot.service
+#sudo systemctl enable telegram-bot.service
+#sudo systemctl start telegram-bot.service
+#systemctl status telegram-bot.service
+
+[Unit]
+Description=Whatever you want to put here
+After=syslog.target
+[Service]
+User=pi
+ExecStart=java -jar /home/pi/home-telegram-bot/app.jar > /home/pi/logs.txt
+SuccessExitStatus=143
+[Install]
+WantedBy=multi-user.target
